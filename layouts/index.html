@@ -9,6 +9,11 @@
 
 <p id="result"></p>
 
+<hr>
+
+<h2>Need advice?</h2>
+<p><a href="/posts/">Read weekly pregnancy tips →</a></p>
+
 <script>
 document.getElementById('calc').onsubmit = e => {
   e.preventDefault();
@@ -17,7 +22,7 @@ document.getElementById('calc').onsubmit = e => {
     document.getElementById('result').textContent = 'Please enter a valid date.';
     return;
   }
-  const due = new Date(lmp.getTime() + 280*24*60*60*1000); // 40 weeks
+  const due = new Date(lmp.getTime() + 280 * 24 * 60 * 60 * 1000); // 40 weeks
   document.getElementById('result').textContent =
     `Estimated due date: ${due.toDateString()}`;
 };
