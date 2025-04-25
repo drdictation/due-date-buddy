@@ -1,0 +1,25 @@
+{{ define "main" }}
+<h1>Welcome to Due-Date Buddy</h1>
+<p>Enter the first day of your last period (LMP):</p>
+
+<form id="calc">
+  <label>LMP Date: <input type="date" id="lmp"></label>
+  <button type="submit">Calculate</button>
+</form>
+
+<p id="result"></p>
+
+<script>
+document.getElementById('calc').onsubmit = e => {
+  e.preventDefault();
+  const lmp = new Date(document.getElementById('lmp').value);
+  if (isNaN(lmp)) {
+    document.getElementById('result').textContent = 'Please enter a valid date.';
+    return;
+  }
+  const due = new Date(lmp.getTime() + 280*24*60*60*1000); // 40 weeks
+  document.getElementById('result').textContent =
+    `Estimated due date: ${due.toDateString()}`;
+};
+</script>
+{{ end }}
